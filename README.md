@@ -33,8 +33,8 @@ weather station readings — not just at the stations themselves, but the space 
 - Plain CSS — no component library or CSS framework
 - The interpolation grid, coastline masking, and colour scale are all computed client-side, in
   the browser, from the bundled station data — there is no backend or build-time data pipeline
-- Map tiles: [CARTO Positron](https://carto.com/basemaps) (a muted basemap, chosen so the
-  temperature colours are the visual focus rather than competing with a busy background)
+- Map tiles: [OpenStreetMap](https://www.openstreetmap.org/) standard raster tiles (no API key,
+  no account — see `DECISIONS.md` for why this replaced an initial CARTO Positron theme)
 
 ## Running it locally
 
