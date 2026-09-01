@@ -1,0 +1,583 @@
+{
+  "source": "Meteo-France SYNOP network, via public.opendatasoft.com (donnees-synop-essentielles-omm)",
+  "region": "France",
+  "snapshot_date": "2026-01-15T09:00:00+00:00",
+  "pulled_on": "2026-08-31",
+  "station_count": 41,
+  "stations": [
+    {
+      "id": "07577",
+      "name": "Montelimar",
+      "lat": 44.5812,
+      "lon": 4.733,
+      "elevation_m": 73,
+      "readings": {
+        "temperature_c": 9.7,
+        "humidity_pct": 78,
+        "wind_speed_ms": 1.5,
+        "pressure_hpa": 1010.1
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07481",
+      "name": "Lyon-St Exupery",
+      "lat": 45.7265,
+      "lon": 5.0778,
+      "elevation_m": 235,
+      "readings": {
+        "temperature_c": 10.2,
+        "humidity_pct": 72,
+        "wind_speed_ms": 3.9,
+        "pressure_hpa": 988.7
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07558",
+      "name": "Millau",
+      "lat": 44.1185,
+      "lon": 3.0195,
+      "elevation_m": 712,
+      "readings": {
+        "temperature_c": 7.2,
+        "humidity_pct": 98,
+        "wind_speed_ms": 7.8,
+        "pressure_hpa": 933.2
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07591",
+      "name": "Embrun",
+      "lat": 44.5657,
+      "lon": 6.5023,
+      "elevation_m": 871,
+      "readings": {
+        "temperature_c": 2.3,
+        "humidity_pct": 76,
+        "wind_speed_ms": 2.3,
+        "pressure_hpa": 918.7
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07761",
+      "name": "Ajaccio",
+      "lat": 41.918,
+      "lon": 8.7927,
+      "elevation_m": 5,
+      "readings": {
+        "temperature_c": 7.6,
+        "humidity_pct": 79,
+        "wind_speed_ms": 2.7,
+        "pressure_hpa": 1020.8
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07005",
+      "name": "Abbeville",
+      "lat": 50.136,
+      "lon": 1.834,
+      "elevation_m": 69,
+      "readings": {
+        "temperature_c": 7.9,
+        "humidity_pct": 86,
+        "wind_speed_ms": 2.3,
+        "pressure_hpa": 999.4
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07222",
+      "name": "Nantes-Bouguenais",
+      "lat": 47.15,
+      "lon": -1.6088,
+      "elevation_m": 26,
+      "readings": {
+        "temperature_c": 10.4,
+        "humidity_pct": 92,
+        "wind_speed_ms": 6.5,
+        "pressure_hpa": 1004.7
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07181",
+      "name": "Nancy-Ochey",
+      "lat": 48.581,
+      "lon": 5.9598,
+      "elevation_m": 336,
+      "readings": {
+        "temperature_c": 8.2,
+        "humidity_pct": 91,
+        "wind_speed_ms": 5.2,
+        "pressure_hpa": 973.8
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07621",
+      "name": "Tarbes-Ossun",
+      "lat": 43.188,
+      "lon": 0.0,
+      "elevation_m": 360,
+      "readings": {
+        "temperature_c": 4.9,
+        "humidity_pct": 87,
+        "wind_speed_ms": 1.9,
+        "pressure_hpa": 969.0
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07650",
+      "name": "Marignane",
+      "lat": 43.4377,
+      "lon": 5.216,
+      "elevation_m": 9,
+      "readings": {
+        "temperature_c": 11.9,
+        "humidity_pct": 74,
+        "wind_speed_ms": 4.7,
+        "pressure_hpa": 1015.7
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07037",
+      "name": "Rouen-Boos",
+      "lat": 49.383,
+      "lon": 1.1817,
+      "elevation_m": 151,
+      "readings": {
+        "temperature_c": 7.1,
+        "humidity_pct": 91,
+        "wind_speed_ms": 6.0,
+        "pressure_hpa": 989.6
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07015",
+      "name": "Lille-Lesquin",
+      "lat": 50.57,
+      "lon": 3.0975,
+      "elevation_m": 47,
+      "readings": {
+        "temperature_c": 8.3,
+        "humidity_pct": 94,
+        "wind_speed_ms": 7.6,
+        "pressure_hpa": 1003.3
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07139",
+      "name": "Alencon",
+      "lat": 48.4455,
+      "lon": 0.1102,
+      "elevation_m": 143,
+      "readings": {
+        "temperature_c": 8.0,
+        "humidity_pct": 92,
+        "wind_speed_ms": 4.7,
+        "pressure_hpa": 991.2
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07299",
+      "name": "Bale-Mulhouse",
+      "lat": 47.6143,
+      "lon": 7.51,
+      "elevation_m": 263,
+      "readings": {
+        "temperature_c": 6.1,
+        "humidity_pct": 86,
+        "wind_speed_ms": 4.1,
+        "pressure_hpa": 985.2
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07643",
+      "name": "Montpellier",
+      "lat": 43.577,
+      "lon": 3.9632,
+      "elevation_m": 2,
+      "readings": {
+        "temperature_c": 11.2,
+        "humidity_pct": 87,
+        "wind_speed_ms": 3.5,
+        "pressure_hpa": 1018.1
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07240",
+      "name": "Tours",
+      "lat": 47.4445,
+      "lon": 0.7273,
+      "elevation_m": 108,
+      "readings": {
+        "temperature_c": 8.8,
+        "humidity_pct": 94,
+        "wind_speed_ms": 3.9,
+        "pressure_hpa": 997.5
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07255",
+      "name": "Bourges",
+      "lat": 47.0592,
+      "lon": 2.3598,
+      "elevation_m": 161,
+      "readings": {
+        "temperature_c": 8.9,
+        "humidity_pct": 85,
+        "wind_speed_ms": 4.6,
+        "pressure_hpa": 993.5
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07630",
+      "name": "Toulouse-Blagnac",
+      "lat": 43.621,
+      "lon": 1.3788,
+      "elevation_m": 151,
+      "readings": {
+        "temperature_c": 7.8,
+        "humidity_pct": 100,
+        "wind_speed_ms": 5.2,
+        "pressure_hpa": 996.0
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07434",
+      "name": "Limoges-Bellegarde",
+      "lat": 45.8612,
+      "lon": 1.175,
+      "elevation_m": 402,
+      "readings": {
+        "temperature_c": 7.9,
+        "humidity_pct": 98,
+        "wind_speed_ms": 4.7,
+        "pressure_hpa": 965.3
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07020",
+      "name": "Pte De La Hague",
+      "lat": 49.7252,
+      "lon": -1.9398,
+      "elevation_m": 6,
+      "readings": {
+        "temperature_c": 8.7,
+        "humidity_pct": 95,
+        "wind_speed_ms": 10.9,
+        "pressure_hpa": 1001.6
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07110",
+      "name": "Brest-Guipavas",
+      "lat": 48.4442,
+      "lon": -4.412,
+      "elevation_m": 94,
+      "readings": {
+        "temperature_c": 10.3,
+        "humidity_pct": 98,
+        "wind_speed_ms": 8.7,
+        "pressure_hpa": 988.4
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07335",
+      "name": "Poitiers-Biard",
+      "lat": 46.5938,
+      "lon": 0.3143,
+      "elevation_m": 123,
+      "readings": {
+        "temperature_c": 9.6,
+        "humidity_pct": 96,
+        "wind_speed_ms": 5.3,
+        "pressure_hpa": 996.6
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07690",
+      "name": "Nice",
+      "lat": 43.6488,
+      "lon": 7.209,
+      "elevation_m": 2,
+      "readings": {
+        "temperature_c": 10.5,
+        "humidity_pct": 62,
+        "wind_speed_ms": 5.0,
+        "pressure_hpa": 1017.7
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07510",
+      "name": "Bordeaux-Merignac",
+      "lat": 44.8307,
+      "lon": -0.6913,
+      "elevation_m": 47,
+      "readings": {
+        "temperature_c": 7.0,
+        "humidity_pct": 99,
+        "wind_speed_ms": 4.8,
+        "pressure_hpa": 1006.4
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07207",
+      "name": "Belle Ile-Le Talut",
+      "lat": 47.2943,
+      "lon": -3.2183,
+      "elevation_m": 34,
+      "readings": {
+        "temperature_c": 10.8,
+        "humidity_pct": null,
+        "wind_speed_ms": 13.3,
+        "pressure_hpa": null
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07607",
+      "name": "Mont-De-Marsan",
+      "lat": 43.9098,
+      "lon": -0.5002,
+      "elevation_m": 59,
+      "readings": {
+        "temperature_c": 4.5,
+        "humidity_pct": 100,
+        "wind_speed_ms": 1.5,
+        "pressure_hpa": 1005.8
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07314",
+      "name": "Pte De Chassiron",
+      "lat": 46.0468,
+      "lon": -1.4115,
+      "elevation_m": 11,
+      "readings": {
+        "temperature_c": 9.9,
+        "humidity_pct": 92,
+        "wind_speed_ms": 7.9,
+        "pressure_hpa": 1006.8
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07471",
+      "name": "Le Puy-Loudes",
+      "lat": 45.0745,
+      "lon": 3.764,
+      "elevation_m": 833,
+      "readings": {
+        "temperature_c": 6.9,
+        "humidity_pct": 87,
+        "wind_speed_ms": 4.4,
+        "pressure_hpa": 920.0
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07117",
+      "name": "Ploumanac'H",
+      "lat": 48.8258,
+      "lon": -3.4732,
+      "elevation_m": 55,
+      "readings": {
+        "temperature_c": 10.5,
+        "humidity_pct": 92,
+        "wind_speed_ms": 7.0,
+        "pressure_hpa": 993.3
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07280",
+      "name": "Dijon-Longvic",
+      "lat": 47.2678,
+      "lon": 5.0883,
+      "elevation_m": 219,
+      "readings": {
+        "temperature_c": 7.7,
+        "humidity_pct": 100,
+        "wind_speed_ms": 2.8,
+        "pressure_hpa": 990.2
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07535",
+      "name": "Gourdon",
+      "lat": 44.745,
+      "lon": 1.3967,
+      "elevation_m": 260,
+      "readings": {
+        "temperature_c": 9.6,
+        "humidity_pct": 86,
+        "wind_speed_ms": 3.8,
+        "pressure_hpa": 982.8
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07747",
+      "name": "Perpignan",
+      "lat": 42.7372,
+      "lon": 2.8728,
+      "elevation_m": 42,
+      "readings": {
+        "temperature_c": 7.0,
+        "humidity_pct": 97,
+        "wind_speed_ms": 0.6,
+        "pressure_hpa": 1011.9
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07168",
+      "name": "Troyes-Barberey",
+      "lat": 48.3247,
+      "lon": 4.02,
+      "elevation_m": 112,
+      "readings": {
+        "temperature_c": 9.2,
+        "humidity_pct": 89,
+        "wind_speed_ms": 4.3,
+        "pressure_hpa": 999.8
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07627",
+      "name": "St Girons",
+      "lat": 43.0053,
+      "lon": 1.1068,
+      "elevation_m": 414,
+      "readings": {
+        "temperature_c": 6.7,
+        "humidity_pct": 74,
+        "wind_speed_ms": 4.1,
+        "pressure_hpa": 964.3
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07027",
+      "name": "Caen-Carpiquet",
+      "lat": 49.18,
+      "lon": -0.4562,
+      "elevation_m": 67,
+      "readings": {
+        "temperature_c": 8.4,
+        "humidity_pct": 90,
+        "wind_speed_ms": 7.7,
+        "pressure_hpa": 998.5
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07072",
+      "name": "Reims-Prunay",
+      "lat": 49.2097,
+      "lon": 4.1553,
+      "elevation_m": 95,
+      "readings": {
+        "temperature_c": 9.2,
+        "humidity_pct": 92,
+        "wind_speed_ms": 4.4,
+        "pressure_hpa": 1001.1
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07190",
+      "name": "Strasbourg-Entzheim",
+      "lat": 48.5495,
+      "lon": 7.6403,
+      "elevation_m": 150,
+      "readings": {
+        "temperature_c": 8.3,
+        "humidity_pct": 88,
+        "wind_speed_ms": 4.2,
+        "pressure_hpa": 998.7
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07790",
+      "name": "Bastia",
+      "lat": 42.5407,
+      "lon": 9.4852,
+      "elevation_m": 10,
+      "readings": {
+        "temperature_c": 10.9,
+        "humidity_pct": 73,
+        "wind_speed_ms": 2.3,
+        "pressure_hpa": 1019.9
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07149",
+      "name": "Orly",
+      "lat": 48.7168,
+      "lon": 2.3843,
+      "elevation_m": 89,
+      "readings": {
+        "temperature_c": 8.9,
+        "humidity_pct": 88,
+        "wind_speed_ms": 5.2,
+        "pressure_hpa": 1000.3
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07460",
+      "name": "Clermont-Fd",
+      "lat": 45.7868,
+      "lon": 3.1493,
+      "elevation_m": 331,
+      "readings": {
+        "temperature_c": 7.9,
+        "humidity_pct": 82,
+        "wind_speed_ms": 4.6,
+        "pressure_hpa": 975.5
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    },
+    {
+      "id": "07130",
+      "name": "Rennes-St Jacques",
+      "lat": 48.0688,
+      "lon": -1.734,
+      "elevation_m": 36,
+      "readings": {
+        "temperature_c": 9.0,
+        "humidity_pct": 93,
+        "wind_speed_ms": 6.4,
+        "pressure_hpa": 1001.9
+      },
+      "observed_at": "2026-01-15T09:00:00+00:00"
+    }
+  ]
+}

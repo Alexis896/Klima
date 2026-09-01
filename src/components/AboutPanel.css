@@ -1,0 +1,49 @@
+.about-panel {
+  position: absolute;
+  top: 56px;
+  right: 12px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 6px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #0d2c3f;
+  width: min(280px, calc(100vw - 40px));
+}
+
+.about-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.about-panel-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #0d2c3f;
+  padding: 0 2px;
+}
+
+.about-panel p {
+  margin: 0 0 8px;
+}
+
+.about-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* On narrow screens the two control buttons can wrap onto a second row —
+   push the panel down far enough to always clear them. */
+@media (max-width: 480px) {
+  .about-panel {
+    top: 92px;
+    right: 12px;
+  }
+}
