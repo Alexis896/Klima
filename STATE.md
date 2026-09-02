@@ -1,7 +1,7 @@
 # STATE
 
 Last updated: 2026-09-02
-Current session: 4 (narrative — case study drafted, cumulative quiz passed 4/4)
+Current session: 5 (elevation correction — V2 feature-complete)
 Hours spent so far: ~3 of ~9-10 budgeted (Session 2, 3 and 4 build time not yet added)
 
 ## Done — Session 0
@@ -65,11 +65,23 @@ Hours spent so far: ~3 of ~9-10 budgeted (Session 2, 3 and 4 build time not yet 
 
 ## Fixed — repo-root mixup (2 Sept 2026)
 - Discovered the actual git repo root is `Klima/app/`, not the parent `Klima/` folder — DECISIONS.md, STATE.md, Klima_Project_Plan.md, and CASE_STUDY.md were never actually tracked or pushed, despite README.md linking to them as if they were in the repo. Fixed by copying all four into `app/` alongside README.md. `INTERVIEW_PREP.md` intentionally stays at the parent level, outside the repo folder entirely.
+- Confirmed pushed: commit `2f6b70a`, "5 files changed, 594 insertions" — `git status` before the push showed exactly the 4 expected new files and nothing from `INTERVIEW_PREP.md` or `Old code/`.
+- **Convention going forward:** DECISIONS.md, STATE.md, CASE_STUDY.md, and Klima_Project_Plan.md are edited in Claude's workspace as before, but now get committed to `Klima/app/` on Alex's machine (the real repo root) — never the parent `Klima/` folder.
+
+## Done — Session 5 (elevation correction)
+- Added `lib/elevation.ts` + `data/france_elevation.json`: a 78 × 120 grid (~14km) of real ground elevations over the map's bounds, bilinearly interpolated at lookup. Sourced from SRTM 90m via the OpenTopoData public API, fetched through the browser on Alex's machine (Claude's sandbox can't reach it), verified against known points (Mont Blanc area 3,052m, Pyrenees 1,596m, Toulouse 167m, Brest 84m)
+- `idw.ts`: added `LAPSE_RATE_C_PER_M` (0.0065) and optional elevation correction in `computeIDWGrid` — station readings normalised to sea level, blended, then brought back down at each grid point's own height. Also exported `rowFractionToLat` (inverse of the existing Mercator row helper)
+- `overlay.ts`: colour scale now derived from cells **inside France only** (2nd–98th percentile), not the whole rectangle — the grid's corners hold Swiss/Italian Alps (−13°C) and open ocean that nobody sees, and letting those set the scale was simply wrong. This is what `lib/pointInPolygon.ts` is now for: too coarse for masking, exactly right for sampling statistics. It is no longer dead code.
+- `AboutPanel.tsx`: elevation limitation replaced (it's now false) with the real remaining caveat — a fixed lapse rate can invert on still winter mornings when cold air pools in valleys
+- README, CASE_STUDY.md and INTERVIEW_PREP.md updated; case study's "what v3 would be" rewritten (elevation *was* its answer) around the inverse query — "given my constraints, where should I go?"
+- Verified: build clean, no console errors, desktop + 375px mobile screenshots, About panel fits within the mobile viewport. Legend now reads −2.0° to 10.3° (was 2.3°–11.9° on station readings alone)
+
+## Measured, for the record
+On this snapshot, inside France: p2 ≈ −2.0°C, median 8.2°C, p98 ≈ 10.3°C, and 89% of French land sits at or above 5°C. The middle 50% of the country spans just 7.0–8.9°C. The lowlands genuinely are near-uniform on a January morning; the mountains are what vary. That's why the corrected map looks the way it does — it isn't a scaling bug.
 
 ## Next action
-- Alex runs git commands from inside `app/` (not the parent Klima folder) to push the Session 4 files, now correctly located there
-- Once pushed, plan §2 criterion 5 ("a one-page case study exists and reads well without narration") is satisfiable — hand the published case-study link to someone cold as the actual test
-- After that: review potential next stages for the project (Alex's own next step, to be discussed)
+- Alex pushes Session 5 from `Klima/app/`
+- Then: V3 scoping in a fresh conversation. Leading candidate (Claude's recommendation, Alex to decide): the inverse query — "given my constraints, where should I go?" — because it makes the interpolated surface load-bearing instead of decorative, and revives the original 2024 concept in minimal form. Agreed already: more countries is not a priority.
 
 ## Blocked / open questions
 - None currently blocking. Note for later: data snapshot date is 2026-01-15, not current — case study/README must say "a January 2026 snapshot," never "live" or "current conditions."

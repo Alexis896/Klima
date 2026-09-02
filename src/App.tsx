@@ -40,6 +40,7 @@ function App() {
       lat: station.lat,
       lon: station.lon,
       value: station.readings.temperature_c,
+      elevation: station.elevation_m ?? 0,
     }));
     return buildTemperatureOverlay(points);
   }, []);

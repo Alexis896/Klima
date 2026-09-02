@@ -27,12 +27,19 @@ function AboutPanel({ stationCount, snapshotLabel, onClose }: AboutPanelProps) {
         for more.
       </p>
       <p>
+        <strong>Height matters:</strong> no station here sits above 871m, so a plain blend
+        would paint valley temperatures straight across the Alps. Readings are converted to
+        their sea-level equivalent, blended, then brought back down using the real ground
+        height at each point (−6.5°C per 1,000m).
+      </p>
+      <p>
         <strong>Data:</strong> a single snapshot from {snapshotLabel}, not live conditions.
       </p>
       <p>
-        <strong>Known limitation:</strong> IDW doesn't account for elevation, so mountain
-        regions (Alps, Pyrenees) can be smoothed out more than they should be — a clear next
-        step, not an oversight.
+        <strong>Known limitation:</strong> that −6.5°C/1,000m is a standard average, and real
+        air doesn't always obey it. On a still winter morning like this one, cold air pools in
+        valleys and the relationship can briefly invert — so mountains here are a good
+        estimate, not a measurement.
       </p>
     </div>
   );

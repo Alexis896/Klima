@@ -5,8 +5,17 @@
 // actual picture (a PNG, built pixel-by-pixel in memory), then hand back
 // that picture plus the bounds it corresponds to.
 
-import { computeIDWGrid, latToRowFraction, type StationPoint, type GeoBounds } from './idw';
+import {
+  computeIDWGrid,
+  latToRowFraction,
+  rowFractionToLat,
+  type StationPoint,
+  type GeoBounds,
+  type Grid,
+} from './idw';
 import { valueToColor } from './colorScale';
+import { elevationAt } from './elevation';
+import { preparePolygons, isInsideFrance } from './pointInPolygon';
 import franceBoundary from '../data/france_boundary.json';
 
 export interface TemperatureOverlay {
@@ -70,6 +79,53 @@ function buildCoastlinePath(
   return path;
 }
 
+/**
+ * The temperature range the colour scale should span.
+ *
+ * Two things make the obvious answer (the grid's outright min and max) the
+ * wrong one:
+ *
+ *  - The grid is a rectangle. Its corners hold open Atlantic and the Swiss
+ *    and Italian Alps — values nobody ever sees, because the overlay is
+ *    clipped to France. Letting a -13°C cell in the Valais set the cold end
+ *    of a scale for a map of France is simply wrong.
+ *  - Even within France, a small number of very high cells sit far below
+ *    everything else, and stretching the ramp to reach them flattens the
+ *    lowlands — where most of the country, and most of the interesting
+ *    variation, actually is.
+ *
+ * So: sample only cells inside France's real outline, and take the 2nd to
+ * 98th percentile of those. The few cells beyond each end saturate at the
+ * end colour. This is the one place the old ray-casting inside/outside test
+ * is still the right tool — it was the wrong tool for masking (too coarse),
+ * but for picking a handful of statistics off a subsampled grid it's ideal.
+ */
+function visibleRange(grid: Grid, polygons: ReturnType<typeof preparePolygons>): [number, number] {
+  const STRIDE = 4; // every 4th row and column — ~16,000 samples, plenty for a percentile
+  const sample: number[] = [];
+
+  for (let row = 0; row < grid.rows; row += STRIDE) {
+    const lat = rowFractionToLat(grid.rows === 1 ? 0 : row / (grid.rows - 1), grid.bounds);
+    for (let col = 0; col < grid.cols; col += STRIDE) {
+      const lon =
+        grid.bounds.lonMin +
+        (col / (grid.cols - 1)) * (grid.bounds.lonMax - grid.bounds.lonMin);
+      if (isInsideFrance(lon, lat, polygons)) {
+        sample.push(grid.values[row * grid.cols + col]);
+      }
+    }
+  }
+
+  if (sample.length === 0) {
+    // Shouldn't happen, but never return a broken scale.
+    return [Math.min(...grid.values), Math.max(...grid.values)];
+  }
+
+  sample.sort((a, b) => a - b);
+  const at = (p: number) => sample[Math.min(sample.length - 1, Math.max(0, Math.round(p * (sample.length - 1))))];
+  return [at(0.02), at(0.98)];
+}
+
 export function buildTemperatureOverlay(stations: StationPoint[]): TemperatureOverlay {
   const lats = stations.map((s) => s.lat);
   const lons = stations.map((s) => s.lon);
@@ -81,11 +137,13 @@ export function buildTemperatureOverlay(stations: StationPoint[]): TemperatureOv
     lonMax: Math.max(...lons) + GRID_PADDING_DEG,
   };
 
-  const grid = computeIDWGrid(stations, bounds, GRID_COLS, GRID_ROWS, 2);
+  const grid = computeIDWGrid(stations, bounds, GRID_COLS, GRID_ROWS, 2, elevationAt);
 
-  const values = stations.map((s) => s.value);
-  const min = Math.min(...values);
-  const max = Math.max(...values);
+  // Scale the colours to the estimated SURFACE, not to the station readings,
+  // because the surface now goes colder than any station ever measured — no
+  // station sits above 871m, but the map covers ground above 3000m.
+  const polygons = preparePolygons(franceBoundary.coordinates as unknown as MultiPolygon);
+  const [min, max] = visibleRange(grid, polygons);
 
   const canvas = document.createElement('canvas');
   canvas.width = grid.cols;

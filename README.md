@@ -12,6 +12,10 @@ weather station readings — not just at the stations themselves, but the space 
 - Estimates temperature everywhere else using **Inverse Distance Weighting (IDW)** — a spatial
   interpolation method that blends nearby stations' readings, weighted so closer stations count
   for more (`weight = 1 / distance²`).
+- Corrects for **altitude**: no station in the dataset sits above 871m, so a plain blend would
+  paint valley temperatures across the Alps. Readings are converted to their sea-level
+  equivalent, blended, then brought back down using the real ground height at each point
+  (a standard lapse rate of −6.5°C per 1,000m).
 - Renders that estimate as a coloured overlay, masked precisely to France's real coastline (not
   a rectangle), with a matching legend.
 - Toggle the overlay on/off, and an in-app "About" panel explaining the method and its
@@ -25,6 +29,7 @@ weather station readings — not just at the stations themselves, but the space 
   a limitation of the data source itself.
 - **Coverage:** 41 stations across mainland France and Corsica.
 - **Coastline shape:** [Natural Earth](https://www.naturalearthdata.com/), 1:10,000,000 scale, used to mask the overlay to France's real outline.
+- **Ground elevation:** SRTM 90m, sampled via the [OpenTopoData](https://www.opentopodata.org/) public API into a 78 × 120 grid (~14km spacing) and bundled as a static file — no runtime API calls.
 
 ## Stack
 

@@ -11,9 +11,23 @@ export interface StationPoint {
   lat: number;
   lon: number;
   value: number;
+  /** Metres above sea level. Used for the lapse-rate correction below. */
+  elevation?: number;
 }
 
 const EARTH_RADIUS_KM = 6371;
+
+/**
+ * The environmental lapse rate: how fast air temperature falls as you climb.
+ *
+ * ~6.5°C per 1000m is the standard atmospheric average. It matters here
+ * because every one of our 41 stations sits between 2m and 871m — there is
+ * no station anywhere near an Alpine summit. Blending station readings
+ * without accounting for height would quietly paint valley temperatures
+ * across a 4000m mountain range, which is the single biggest way a map like
+ * this can be confidently wrong.
+ */
+export const LAPSE_RATE_C_PER_M = 0.0065;
 
 /**
  * Approximate distance between two lat/lon points, in kilometres.
@@ -113,10 +127,34 @@ export function computeIDWGrid(
   bounds: GeoBounds,
   cols: number,
   rows: number,
-  power = 2
+  power = 2,
+  elevationAt?: (lat: number, lon: number) => number
 ): Grid {
   const values = new Float32Array(cols * rows);
   const lonStep = (bounds.lonMax - bounds.lonMin) / (cols - 1);
+
+  // --- Height correction, in three steps ---
+  //
+  // Interpolating raw readings directly would treat a 4000m summit as if it
+  // were just "more of the valley next door". Instead:
+  //
+  //   1. Convert every station's reading to what it would be at sea level,
+  //      by adding back the cooling its own altitude caused.
+  //   2. Interpolate THOSE sea-level values — a much smoother field, because
+  //      the biggest local distortion (terrain) has been taken out of it.
+  //   3. Convert back down at each grid point, using that point's own ground
+  //      height.
+  //
+  // The interpolation in the middle is unchanged; all that changed is what
+  // is being interpolated. Without an elevation lookup this falls back to
+  // plain IDW on the raw readings.
+  const correctForHeight = typeof elevationAt === 'function';
+  const points: StationPoint[] = correctForHeight
+    ? stations.map((s) => ({
+        ...s,
+        value: s.value + LAPSE_RATE_C_PER_M * (s.elevation ?? 0),
+      }))
+    : stations;
 
   // Longitude stays evenly spaced — Mercator doesn't distort east-west.
   // Latitude does not: each row's latitude comes from an even step in
@@ -129,7 +167,11 @@ export function computeIDWGrid(
     const lat = mercatorYToLat(mercMax + t * (mercMin - mercMax));
     for (let col = 0; col < cols; col++) {
       const lon = bounds.lonMin + col * lonStep;
-      values[row * cols + col] = idwEstimate(lat, lon, stations, power);
+      let estimate = idwEstimate(lat, lon, points, power);
+      if (correctForHeight) {
+        estimate -= LAPSE_RATE_C_PER_M * elevationAt(lat, lon);
+      }
+      values[row * cols + col] = estimate;
     }
   }
 
@@ -142,6 +184,13 @@ export function computeIDWGrid(
  * Used to place other geographic data (like the coastline outline) onto
  * the exact same pixel grid, so everything drawn on the overlay lines up.
  */
+/** The inverse of latToRowFraction: which real latitude a grid row sits at. */
+export function rowFractionToLat(fraction: number, bounds: GeoBounds): number {
+  const mercMax = mercatorLatToY(bounds.latMax);
+  const mercMin = mercatorLatToY(bounds.latMin);
+  return mercatorYToLat(mercMax + fraction * (mercMin - mercMax));
+}
+
 export function latToRowFraction(lat: number, bounds: GeoBounds): number {
   const mercMax = mercatorLatToY(bounds.latMax);
   const mercMin = mercatorLatToY(bounds.latMin);
