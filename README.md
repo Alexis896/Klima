@@ -3,7 +3,7 @@
 An interactive map of France that estimates temperature across the whole country from real
 weather station readings — not just at the stations themselves, but the space in between.
 
-**Live demo:** _add the deployed URL here once Session 3's deploy step is done_
+**Live demo:** [klima-rho.vercel.app](https://klima-rho.vercel.app)
 
 ## What it does
 
@@ -64,6 +64,7 @@ up afterward.
 
 ## Project docs
 
+- `CASE_STUDY.md` — the one-page write-up: what this proves, the real decisions and bugs behind it, and what it can't do
 - `Klima_Project_Plan.md` — the original plan and scope
 - `DECISIONS.md` — a running log of every non-trivial decision, with reasoning, in the order made
 - `STATE.md` — current build status, session by session
